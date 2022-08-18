@@ -22,5 +22,6 @@ dependencies {
     implementation 'io.insert-koin:koin-android:3.0.1'
     implementation 'androidx.core:core-splashscreen:1.0.0'
 
+    implementation project(":data:remote")
     implementation project(":feature:pokemonList")
 }
