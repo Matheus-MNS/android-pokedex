@@ -19,5 +19,3 @@ internal data class PokemonResponse(
     @SerializedName("url")
     val url: String? = null
 )
-
-

@@ -12,4 +12,3 @@ internal data class Pokemon(
     val url: String
 )
 
-

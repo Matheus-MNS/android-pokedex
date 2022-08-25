@@ -14,5 +14,4 @@ internal class PokemonListRepositoryImpl(
 ) : PokemonListRepository {
     override fun getPokemonList(): Flow<PokemonList> =
         remoteDataSource.getPokemonList().flowOn(dispatcher)
-
 }
