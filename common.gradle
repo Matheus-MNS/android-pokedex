@@ -30,5 +30,4 @@ android {
 dependencies {
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'io.insert-koin:koin-core:3.0.1'
-    implementation 'io.insert-koin:koin-androidx-viewmodel:2.2.3'
 }
