@@ -1,0 +1,1 @@
+C:\Users\mathe\Documents\Repositories\android-pokedex\buildSrc\build\classes\kotlin\main\ExternalLibs.class;C:\Users\mathe\Documents\Repositories\android-pokedex\buildSrc\build\classes\kotlin\main\InternalLibs.class;C:\Users\mathe\Documents\Repositories\android-pokedex\buildSrc\build\classes\kotlin\main\Versions.class

@@ -1,9 +1,9 @@
 android {
-    compileSdk 32
+    compileSdk Versions.compileSdk
 
     defaultConfig {
-        minSdk 21
-        targetSdk 32
+        minSdk Versions.minSdk
+        targetSdk Versions.targetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -19,15 +19,15 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility Versions.java
+        targetCompatibility Versions.java
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = Versions.jvmTarget
     }
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'io.insert-koin:koin-core:3.0.1'
+    implementation ExternalLibs.coreKtx
+    implementation ExternalLibs.koinCore
 }

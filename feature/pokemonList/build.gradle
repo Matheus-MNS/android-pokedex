@@ -13,9 +13,10 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.android.material:material:1.6.1'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.1'
-    implementation 'io.insert-koin:koin-androidx-viewmodel:2.2.3'
+    implementation ExternalLibs.material
+    implementation ExternalLibs.navigation
+    implementation ExternalLibs.koinViewModel
 
-    implementation project(":data:remote")
+    implementation project(InternalLibs.dataRemote)
+    implementation project(InternalLibs.designSystem)
 }

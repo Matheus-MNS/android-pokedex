@@ -43,5 +43,5 @@ internal class PokemonListFragment : Fragment(R.layout.fragment_pokemon_list) {
     private fun handleSuccess(pokemonList: PokemonList) {}
 
     private fun handleError() {}
-    
+
 }

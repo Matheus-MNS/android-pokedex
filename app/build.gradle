@@ -17,11 +17,12 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.android.material:material:1.6.1'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.1'
-    implementation 'io.insert-koin:koin-android:3.0.1'
-    implementation 'androidx.core:core-splashscreen:1.0.0'
+    implementation ExternalLibs.material
+    implementation ExternalLibs.navigation
+    implementation ExternalLibs.koinAndroid
+    implementation ExternalLibs.splashScreen
 
-    implementation project(":data:remote")
-    implementation project(":feature:pokemonList")
+
+    implementation project(InternalLibs.dataRemote)
+    implementation project(InternalLibs.pokemonList)
 }
