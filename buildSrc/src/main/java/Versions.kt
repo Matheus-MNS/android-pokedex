@@ -16,6 +16,7 @@ object Versions {
 
     // Google
     const val material = "1.6.1"
+    const val flexBox = "3.0.0"
 
     // Koin
     const val koin = "2.2.3"

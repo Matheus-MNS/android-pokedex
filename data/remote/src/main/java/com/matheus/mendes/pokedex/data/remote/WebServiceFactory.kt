@@ -10,8 +10,8 @@ private const val SIXTY_SECONDS = 60L
 
 object WebServiceFactory {
 
-    fun provideRetrofit(): Retrofit = Retrofit.Builder()
-        .baseUrl(BuildConfig.BASE_URL)
+    fun provideRetrofit(baseUrl: String): Retrofit = Retrofit.Builder()
+        .baseUrl(baseUrl)
         .client(provideOkHttpClient())
         .addConverterFactory(GsonConverterFactory.create())
         .build()

@@ -5,15 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.matheus.mendes.pokedex.pokemonlist.R
 import com.matheus.mendes.pokedex.pokemonlist.databinding.FragmentPokemonListBinding
 import com.matheus.mendes.pokedex.pokemonlist.domain.PokemonList
+import com.matheus.mendes.pokedex.pokemonlist.presentation.adapter.PokemonListAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 internal class PokemonListFragment : Fragment(R.layout.fragment_pokemon_list) {
     private val binding by lazy { FragmentPokemonListBinding.inflate(layoutInflater) }
     private val viewModel: PokemonListViewModel by viewModel()
+    private val pokemonListAdapter = PokemonListAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,17 +34,26 @@ internal class PokemonListFragment : Fragment(R.layout.fragment_pokemon_list) {
     private fun observerState() {
         viewModel.pokemonListViewState.observe(viewLifecycleOwner) { state ->
             when (state) {
-                is PokemonListViewState.Loading -> handleLoading(state.isLoading)
+                is PokemonListViewState.Loading -> handleLoading(true)
                 is PokemonListViewState.Success -> handleSuccess(state.pokemonList)
                 is PokemonListViewState.Error -> handleError()
             }
         }
     }
 
-    private fun handleLoading(loading: Boolean) {}
+    private fun handleLoading(isLoading: Boolean) {
 
-    private fun handleSuccess(pokemonList: PokemonList) {}
+    }
 
-    private fun handleError() {}
+    private fun handleSuccess(pokemonList: PokemonList) {
+        handleLoading(false)
+        pokemonListAdapter.submitList(pokemonList.list)
+        binding.repositoriesRecyclerView.adapter = pokemonListAdapter
 
+    }
+
+    private fun handleError() {
+        handleLoading(false)
+
+    }
 }

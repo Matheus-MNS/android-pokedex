@@ -11,7 +11,7 @@ internal class App : Application() {
         super.onCreate()
         startKoin {
             modules(
-                dataRemoteModule,
+                dataRemoteModule(BuildConfig.BASE_URL),
                 pokemonListModule
             ).androidContext(applicationContext)
         }

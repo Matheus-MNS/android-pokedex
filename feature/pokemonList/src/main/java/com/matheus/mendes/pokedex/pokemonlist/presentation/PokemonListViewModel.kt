@@ -3,6 +3,7 @@ package com.matheus.mendes.pokedex.pokemonlist.presentation
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.matheus.mendes.pokedex.pokemonlist.domain.PokemonList
 import com.matheus.mendes.pokedex.pokemonlist.domain.PokemonListUseCase
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onCompletion
@@ -25,15 +26,12 @@ internal class PokemonListViewModel(
         viewModelScope.launch {
             pokemonListUseCase()
                 .onStart {
-                    pokemonListViewState.value = PokemonListViewState.Loading(true)
-                }
-                .onCompletion {
-                    pokemonListViewState.value = PokemonListViewState.Loading(false)
+                    pokemonListViewState.value = PokemonListViewState.Loading
                 }
                 .catch {
                     pokemonListViewState.value = PokemonListViewState.Error
                 }
-                .collect{
+                .collect {
                     pokemonListViewState.value = PokemonListViewState.Success(it)
                 }
         }

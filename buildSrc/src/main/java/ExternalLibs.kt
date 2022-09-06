@@ -7,6 +7,7 @@ object ExternalLibs {
 
     // Google
     const val material = "com.google.android.material:material:${Versions.material}"
+    const val flexBox = "com.google.android.flexbox:flexbox:${Versions.flexBox}"
 
     // Koin
     const val koinCore = "io.insert-koin:koin-core:${Versions.koin}"
@@ -25,4 +26,6 @@ object ExternalLibs {
     const val junit = "junit:junit:${Versions.junit}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     const val extJunit = "androidx.test.ext:junit:${Versions.extJunit}"
+
+
 }
