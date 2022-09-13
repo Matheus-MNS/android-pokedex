@@ -32,4 +32,7 @@ object Versions {
     const val extJunit = "1.1.3"
     const val espresso = "3.4.0"
 
+    // Lottie
+    const val lottie = "3.4.0"
+
 }

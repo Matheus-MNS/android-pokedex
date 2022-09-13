@@ -10,8 +10,9 @@ import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 
-
+const val ERROR = "Não foi possível conectar a pokedex"
 internal class PokemonListViewModel(
     private val pokemonListUseCase: PokemonListUseCase
 ) : ViewModel() {
@@ -29,7 +30,7 @@ internal class PokemonListViewModel(
                     pokemonListViewState.value = PokemonListViewState.Loading
                 }
                 .catch {
-                    pokemonListViewState.value = PokemonListViewState.Error
+                    pokemonListViewState.value = PokemonListViewState.Error(ERROR)
                 }
                 .collect {
                     pokemonListViewState.value = PokemonListViewState.Success(it)
