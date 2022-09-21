@@ -20,8 +20,7 @@ object ExternalLibs {
 
     // OkHttp
     const val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
-    const val okhttpLoggingInterceptor =
-        "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
+    const val okhttpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
 
     // Test
     const val junit = "junit:junit:${Versions.junit}"

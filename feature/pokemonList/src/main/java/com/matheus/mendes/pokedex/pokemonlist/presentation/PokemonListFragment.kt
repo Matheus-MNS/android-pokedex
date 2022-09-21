@@ -7,13 +7,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import com.matheus.mendes.pokedex.pokemonlist.R
 import com.matheus.mendes.pokedex.pokemonlist.databinding.FragmentPokemonListBinding
 import com.matheus.mendes.pokedex.pokemonlist.domain.PokemonList
 import com.matheus.mendes.pokedex.pokemonlist.presentation.adapter.PokemonListAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import retrofit2.HttpException
 
 
 internal class PokemonListFragment : Fragment(R.layout.fragment_pokemon_list) {
@@ -39,7 +37,7 @@ internal class PokemonListFragment : Fragment(R.layout.fragment_pokemon_list) {
             when (state) {
                 is PokemonListViewState.Loading -> handleLoading(true)
                 is PokemonListViewState.Success -> handleSuccess(state.pokemonList)
-                is PokemonListViewState.Error -> handleError(state.errorMessage)
+                is PokemonListViewState.Error -> handleError(state.messageId)
             }
         }
     }
@@ -54,8 +52,8 @@ internal class PokemonListFragment : Fragment(R.layout.fragment_pokemon_list) {
         binding.repositoriesRecyclerView.adapter = pokemonListAdapter
     }
 
-    private fun handleError(error: String) {
+    private fun handleError(messageId: Int) {
         handleLoading(false)
-        Toast.makeText(context, error, Toast.LENGTH_LONG).show()
+        Toast.makeText(context, messageId, Toast.LENGTH_LONG).show()
     }
 }
