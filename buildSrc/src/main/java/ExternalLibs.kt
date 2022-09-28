@@ -27,5 +27,8 @@ object ExternalLibs {
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     const val extJunit = "androidx.test.ext:junit:${Versions.extJunit}"
 
+    // Lottie
+    const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
+
 
 }

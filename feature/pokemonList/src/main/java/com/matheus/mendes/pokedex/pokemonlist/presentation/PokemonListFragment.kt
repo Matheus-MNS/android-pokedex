@@ -4,8 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import com.matheus.mendes.pokedex.pokemonlist.R
 import com.matheus.mendes.pokedex.pokemonlist.databinding.FragmentPokemonListBinding
 import com.matheus.mendes.pokedex.pokemonlist.domain.PokemonList
@@ -36,24 +37,23 @@ internal class PokemonListFragment : Fragment(R.layout.fragment_pokemon_list) {
             when (state) {
                 is PokemonListViewState.Loading -> handleLoading(true)
                 is PokemonListViewState.Success -> handleSuccess(state.pokemonList)
-                is PokemonListViewState.Error -> handleError()
+                is PokemonListViewState.Error -> handleError(state.messageId)
             }
         }
     }
 
     private fun handleLoading(isLoading: Boolean) {
-
+        binding.loadingProgressAnimation.isVisible = isLoading
     }
 
     private fun handleSuccess(pokemonList: PokemonList) {
         handleLoading(false)
         pokemonListAdapter.submitList(pokemonList.list)
         binding.repositoriesRecyclerView.adapter = pokemonListAdapter
-
     }
 
-    private fun handleError() {
+    private fun handleError(messageId: Int) {
         handleLoading(false)
-
+        Toast.makeText(context, messageId, Toast.LENGTH_LONG).show()
     }
 }
