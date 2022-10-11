@@ -35,4 +35,6 @@ object Versions {
     // Lottie
     const val lottie = "3.4.0"
 
+    //Picasso
+    const val picasso = "2.8"
 }

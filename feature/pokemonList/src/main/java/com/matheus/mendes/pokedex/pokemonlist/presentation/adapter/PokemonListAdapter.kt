@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.matheus.mendes.pokedex.pokemonlist.databinding.ItemPokemonBinding
 import com.matheus.mendes.pokedex.pokemonlist.domain.Pokemon
 import com.matheus.mendes.pokedex.pokemonlist.utils.DefaultDiffCallback
+import com.squareup.picasso.Picasso
 
 internal class PokemonListAdapter : ListAdapter<Pokemon, PokemonListAdapter.ViewHolder>(
     DefaultDiffCallback<Pokemon>()
@@ -25,7 +26,11 @@ internal class PokemonListAdapter : ListAdapter<Pokemon, PokemonListAdapter.View
         RecyclerView.ViewHolder(binding.root) {
         fun bind(pokemonItem: Pokemon) {
             with(binding) {
-                pokemonNameTextView.text = pokemonItem.name
+                pokemonNumberTextView.text = "#" + pokemonItem.id
+                pokemonNameTextView.text = pokemonItem.name.replaceFirstChar { it.uppercase() }
+                Picasso.get()
+                    .load(pokemonItem.imageUrl)
+                    .into(pokemonImageView)
             }
         }
     }

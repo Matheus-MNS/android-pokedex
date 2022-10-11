@@ -30,5 +30,6 @@ object ExternalLibs {
     // Lottie
     const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
 
-
+    // Picasso
+    const val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
 }

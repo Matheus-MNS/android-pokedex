@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import com.matheus.mendes.pokedex.pokemonlist.R
 import com.matheus.mendes.pokedex.pokemonlist.databinding.FragmentPokemonListBinding
-import com.matheus.mendes.pokedex.pokemonlist.domain.PokemonList
+import com.matheus.mendes.pokedex.pokemonlist.domain.Pokemon
 import com.matheus.mendes.pokedex.pokemonlist.presentation.adapter.PokemonListAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -30,6 +31,7 @@ internal class PokemonListFragment : Fragment(R.layout.fragment_pokemon_list) {
         super.onViewCreated(view, savedInstanceState)
 
         observerState()
+        recyclerViewScrollListener()
     }
 
     private fun observerState() {
@@ -46,14 +48,29 @@ internal class PokemonListFragment : Fragment(R.layout.fragment_pokemon_list) {
         binding.loadingProgressAnimation.isVisible = isLoading
     }
 
-    private fun handleSuccess(pokemonList: PokemonList) {
+    private fun handleSuccess(pokemonList: List<Pokemon>) {
         handleLoading(false)
-        pokemonListAdapter.submitList(pokemonList.list)
-        binding.repositoriesRecyclerView.adapter = pokemonListAdapter
+        pokemonListAdapter.submitList(pokemonList)
+        binding.pokemonListRecyclerView.adapter = pokemonListAdapter
+        binding.pokemonListRecyclerView.scrollToPosition(0)
     }
 
     private fun handleError(messageId: Int) {
         handleLoading(false)
         Toast.makeText(context, messageId, Toast.LENGTH_LONG).show()
+    }
+
+    private fun recyclerViewScrollListener() {
+        with(binding) {
+            pokemonListRecyclerView.addOnScrollListener(object :
+                RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    if (!pokemonListRecyclerView.canScrollVertically(1)) {
+                        viewModel.getPokemonList()
+                    }
+                }
+            })
+        }
     }
 }

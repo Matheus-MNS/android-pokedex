@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".presentation.PokemonListFragment">
 
+     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/pokemon_list_recycler_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_04"
+        android:fillViewport="true"
+        android:orientation="horizontal"
+        app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_pokemon" />
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/loadingProgressAnimation"
         android:layout_width="0dp"
@@ -19,17 +32,4 @@
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/pokeball_loading_animation" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/repositoriesRecyclerView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/spacing_04"
-        android:fillViewport="true"
-        android:orientation="horizontal"
-        app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_pokemon" />
 </androidx.constraintlayout.widget.ConstraintLayout>

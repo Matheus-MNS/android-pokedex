@@ -18,6 +18,7 @@ dependencies {
     implementation ExternalLibs.koinViewModel
     implementation ExternalLibs.flexBox
     implementation ExternalLibs.lottie
+    implementation ExternalLibs.picasso
 
     implementation project(InternalLibs.dataRemote)
     implementation project(InternalLibs.designSystem)
